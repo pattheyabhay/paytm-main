@@ -41,6 +41,12 @@ router.post('/signup', async (req, res) =>{
 
     const userId = user._id; 
 
+    // Creating Account with initial Random balance
+    await Account.create({
+        userId,
+        balance: 1 + Math.random() * 10000
+    })
+
     const token = jwt.sign({    //jwt.sign() used to generate JSON web token
         userId
     }, JWT_SECRET)
@@ -107,7 +113,7 @@ router.put("/", authMiddleware, async (req, res) => {
     })
 })
 
-router.get("/bult", async (req, res) =>{
+router.get("/bulk", async (req, res) =>{
     const filter = req.query.filter || "";
 
     const users = User.find({

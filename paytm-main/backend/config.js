@@ -1,2 +1,4 @@
-const JWT_SECRET = 'abhaysecret'
-module.exports = JWT_SECRET;
+//backend/config.js
+module.exports = {
+	JWT_SECRET: "abhay-secret"
+}

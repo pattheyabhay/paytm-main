@@ -1,3 +1,4 @@
+// backend/db.js
 const mongoose = require('mongoose')
 
 const url = 'mongodb+srv://admin:12345678910@cluster0.9dgfcrj.mongodb.net/User';
@@ -19,7 +20,7 @@ const userSchema = new mongoose.Schema({
         maxLength: 30
     },
 
-    passward:{
+    password:{
         type: String,
         required: true,
         minLength: 6

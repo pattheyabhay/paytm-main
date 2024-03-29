@@ -1,4 +1,4 @@
-//backend/config.js
+// config.js
 module.exports = {
-	JWT_SECRET: "abhay-secret"
-}
+    JWT_SECRET: "your_secret_key_here"
+};

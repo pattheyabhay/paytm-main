@@ -7,9 +7,10 @@ const { default: mongoose } = require('mongoose');
 const router = express.Router();
 
 router.get("/balance",authMiddleware, async (req, res) => {
-    console.log("abcd")
+    
     const account = await Account.findOne({
         userId: req.userId
+        
         
     });
 
@@ -25,7 +26,10 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     const { amount, to } = req.body;
 
     // Fetch the accounts within the transaction
-    const account = await Account.findOne({ userId: req.userId }).session(session);
+    const account = await Account.findOne({ 
+        userId: req.userId 
+    })
+    .session(session);
 
     if (!account || account.balance < amount) {
         await session.abortTransaction();
@@ -35,7 +39,7 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     }
 
     const toAccount = await Account.findOne({ userId: to }).session(session);
-
+    console.log("account is", to)
     if (!toAccount) {
         await session.abortTransaction();
         return res.status(400).json({

@@ -39,7 +39,7 @@ router.post('/signup', async (req, res) =>{
         lastName : req.body.lastName
     })
 
-    const userId = user._id; 
+    const userId = User._id; 
 
     // Creating Account with initial Random balance
     await Account.create({

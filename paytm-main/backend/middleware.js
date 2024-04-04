@@ -1,8 +1,8 @@
 
-const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('./config');
+const jwt = require('jsonwebtoken');
 
-const authMiddleware = (req, res, next)=>{
+const authMiddleware = (req, res, next) => {
     
     const authHeader = req.headers.authorization; //This line will extract the value of authorization which will contain the token for authentication in Bearer <token> format
     
@@ -16,10 +16,11 @@ const authMiddleware = (req, res, next)=>{
 
     try{
         const decoded = jwt.verify(token,JWT_SECRET)
-        console.log(decoded)
+        
         req.userId = decoded.userId;
-        console.log(req.userId)
+        
         next();
+        
     }catch(err){
         console.error(err)
         return res.status(403).json({message: "THis is error"});
@@ -27,5 +28,5 @@ const authMiddleware = (req, res, next)=>{
 }
 
 module.exports = {
-    authMiddleware,
+    authMiddleware
 }

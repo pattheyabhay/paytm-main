@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
 
 
 const accountSchema =  new mongoose.Schema({
-    userID:{
+    userId:{
         type: String,
     },
     balance:{
